@@ -1,6 +1,7 @@
 # Type insurance
 
 > Helper class to force (input) types, mainly for pure JavaScript environments
+> [![build][build-badge]][build-url] [![coverage][coverage-badge]][coverage-url] [![unicorn][unicorn-badge]][unicorn-url] [![xo-code-style][xo-badge]][xo-url]
 
 ## Key notes / highlights
 
@@ -152,9 +153,9 @@ Returns an array generated from the input of the constructor.
 
 ## Dependencies
 
-- [baseconvert](https://www.npmjs.com/package/baseconvert)
-- [hash.js](https://www.npmjs.com/package/hash.js)
 - [lodash](https://www.npmjs.com/package/lodash)
+- [hash.js](https://www.npmjs.com/package/hash.js)
+- [baseconvert](https://www.npmjs.com/package/baseconvert)
 
 ## Related
 
@@ -163,3 +164,14 @@ Returns an array generated from the input of the constructor.
 ## Maintainer
 
 - [Ruben Giannotti](http://rubengiannotti.com) - ruben.giannotti@gmx.net - github.com/giannotr
+
+https://travis-ci.org/github/giannotr/type-insurance
+
+[build-badge]: https://travis-ci.org/giannotr/type-insurance.svg?branch=master
+[build-url]: https://travis-ci.org/giannotr/type-insurance
+[coverage-badge]: https://coveralls.io/repos/github/giannotr/type-insurance/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/github/giannotr/type-insurance?branch=master
+[unicorn-badge]: https://img.shields.io/badge/unicorn-approved-ff69b4.svg
+[unicorn-url]: https://www.youtube.com/watch?v=9auOCbH5Ns4
+[xo-badge]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg
+[xo-url]: https://github.com/xojs/xo
