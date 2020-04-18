@@ -152,9 +152,9 @@ Returns an array generated from the input of the constructor.
 
 ## Dependencies
 
-- [lodash](https://www.npmjs.com/package/lodash)
-- [hash.js](https://www.npmjs.com/package/hash.js)
 - [baseconvert](https://www.npmjs.com/package/baseconvert)
+- [hash.js](https://www.npmjs.com/package/hash.js)
+- [lodash](https://www.npmjs.com/package/lodash)
 
 ## Related
 
