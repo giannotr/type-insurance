@@ -176,7 +176,7 @@ Returns an array generated from the input of the constructor.
 [vulnerabilities-url]: https://snyk.io/test/github/giannotr/type-insurance?targetFile=package.json
 [dependencies-badge]: https://david-dm.org/giannotr/type-insurance.svg
 [dependencies-url]: https://david-dm.org/giannotr/type-insurance
-[size-badge]: https://packagephobia.now.sh/badge?p=type-insurance
+[size-badge]: https://badgen.net/packagephobia/publish/type-insurance
 [size-url]: https://packagephobia.now.sh/result?p=type-insurance
 [unicorn-badge]: https://img.shields.io/badge/unicorn-approved-ff69b4.svg
 [unicorn-url]: https://www.youtube.com/watch?v=9auOCbH5Ns4
