@@ -4,7 +4,7 @@
   "description": "Helper class to force (input) types, mainly for pure JavaScript environments",
   "main": "lib/index.js",
   "scripts": {
-    "test": "npm run prepublish && jest",
+    "test": "xo && npm run prepublish && jest",
     "prepublish": "babel src --out-dir lib"
   },
   "repository": {
@@ -29,7 +29,8 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
-    "jest": "^25.3.0"
+    "jest": "^25.3.0",
+    "xo": "^0.29.1"
   },
   "dependencies": {
     "baseconvert": "^1.0.0",
@@ -37,9 +38,25 @@
     "lodash": "^4.17.15",
     "object-hash": "^2.0.3"
   },
+  "xo": {
+    "rules": {
+      "keyword-spacing": "warn",
+      "no-trailing-spaces": "warn",
+      "no-prototype-builtins": "warn",
+      "no-lonely-if": "off",
+      "no-else-return": "off",
+      "no-implicit-coercion": "off"
+    },
+    "ignores": [
+      "./src/*.test.js"
+    ]
+	},
   "babel": {
     "presets": [
       "@babel/preset-env"
     ]
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["/node_modules/", "/src/"]
   }
 }
