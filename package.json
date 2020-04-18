@@ -1,6 +1,6 @@
 {
   "name": "type-insurance",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helper class to force (input) types, mainly for pure JavaScript environments",
   "main": "index.js",
   "scripts": {
