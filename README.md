@@ -1,7 +1,8 @@
 # Type insurance
 
 > Helper class to force (input) types, mainly for pure JavaScript environments
-> [![build][build-badge]][build-url] [![coverage][coverage-badge]][coverage-url] [![unicorn][unicorn-badge]][unicorn-url] [![xo-code-style][xo-badge]][xo-url]
+
+[![build][build-badge]][build-url] [![coverage][coverage-badge]][coverage-url] [![unicorn][unicorn-badge]][unicorn-url] [![xo-code-style][xo-badge]][xo-url]
 
 ## Key notes / highlights
 
