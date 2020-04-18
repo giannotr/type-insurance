@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "npm run prepublish && jest",
-    "test-dev": "xo && npm run test",
-    "prepublish": "babel src --out-dir ./"
+    "prepublish": "babel src --out-dir ./",
+    "test": "npm run prepublish && jest --coverage && coveralls < coverage/lcov.info",
+    "test-dev": "xo && npm run test"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "coveralls": "^3.0.11",
     "jest": "^25.3.0",
     "xo": "^0.29.1"
   },

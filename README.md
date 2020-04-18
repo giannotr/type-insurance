@@ -2,7 +2,7 @@
 
 > Helper class to force (input) types, mainly for pure JavaScript environments
 
-[![build][build-badge]][build-url] [![coverage][coverage-badge]][coverage-url] [![unicorn][unicorn-badge]][unicorn-url] [![xo-code-style][xo-badge]][xo-url]
+[![npm][npm-badge]][npm-url] [![build][build-badge]][build-url] [![coverage][coverage-badge]][coverage-url] [![Known Vulnerabilities][vulnerabilities-badge]][vulnerabilities-url] [![size][dependencies-badge]][dependencies-url] [![size][size-badge]][size-url] [![unicorn][unicorn-badge]][unicorn-url] [![xo][xo-badge]][xo-url] [![license][license-badge]][license-url]
 
 ## Key notes / highlights
 
@@ -77,11 +77,11 @@ Respectively, `true|false` should return the stringified versions, `1|0` and `[t
 
 Example: `const myInput = new TypeInsurance(myParam);`
 
-A class instance of `TypeInsurnace` holds the properties `.string`, `.number`, `.boolean`, `.array` and `.object` holding the accordingly typed values.
+A class instance of `TypeInsurnace` holds the properties `.string`, `.number`, `.boolean`, `.array` and `.object`, each in turn holding the accordingly typed values.
 
 Options get passed in as an object. Available options are:
 
-- `defaultKey` (default: "key") - Specifies the default key for implicitely generated objects from strings and numbers
+- `defaultKey` (default: "key") - Specifies the default key for implicitly generated objects from strings and numbers
 
 #### .string
 
@@ -154,9 +154,9 @@ Returns an array generated from the input of the constructor.
 
 ## Dependencies
 
-- [lodash](https://www.npmjs.com/package/lodash)
-- [hash.js](https://www.npmjs.com/package/hash.js)
 - [baseconvert](https://www.npmjs.com/package/baseconvert)
+- [hash.js](https://www.npmjs.com/package/hash.js)
+- [lodash](https://www.npmjs.com/package/lodash)
 
 ## Related
 
@@ -166,11 +166,21 @@ Returns an array generated from the input of the constructor.
 
 - [Ruben Giannotti](http://rubengiannotti.com) - ruben.giannotti@gmx.net - github.com/giannotr
 
+[npm-badge]: https://img.shields.io/npm/v/type-insurance.svg
+[npm-url]: https://www.npmjs.com/package/type-insurance
 [build-badge]: https://travis-ci.org/giannotr/type-insurance.svg?branch=master
 [build-url]: https://travis-ci.org/giannotr/type-insurance
 [coverage-badge]: https://coveralls.io/repos/github/giannotr/type-insurance/badge.svg?branch=master
 [coverage-url]: https://coveralls.io/github/giannotr/type-insurance?branch=master
+[vulnerabilities-badge]: https://snyk.io/test/github/giannotr/type-insurance/badge.svg?targetFile=package.json
+[vulnerabilities-url]: https://snyk.io/test/github/giannotr/type-insurance?targetFile=package.json
+[dependencies-badge]: https://david-dm.org/giannotr/type-insurance.svg
+[dependencies-url]: https://david-dm.org/giannotr/type-insurance
+[size-badge]: https://packagephobia.now.sh/badge?p=type-insurance
+[size-url]: https://packagephobia.now.sh/result?p=type-insurance
 [unicorn-badge]: https://img.shields.io/badge/unicorn-approved-ff69b4.svg
 [unicorn-url]: https://www.youtube.com/watch?v=9auOCbH5Ns4
 [xo-badge]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg
 [xo-url]: https://github.com/xojs/xo
+[license-badge]: https://img.shields.io/github/license/giannotr/type-insurance.svg
+[license-url]: https://github.com/giannotr/type-insurance/blob/master/LICENSE

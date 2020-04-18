@@ -1,6 +1,6 @@
+import isEmpty from 'lodash/isEmpty';
 import hash from 'hash.js';
 import baseConvert from 'baseconvert';
-import isEmpty from 'lodash/isEmpty';
 
 function castString(input) {
 	const isArray = Array.isArray(input);
