@@ -3,12 +3,6 @@
   "version": "1.0.1",
   "description": "Helper class to force (input) types, mainly for pure JavaScript environments",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "prepublish": "babel src --out-dir ./",
-    "test": "npm run prepublish && jest --coverage && coveralls < coverage/lcov.info",
-    "test-dev": "xo && npm run test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/giannotr/type-insurance.git"
@@ -27,6 +21,12 @@
     "url": "https://github.com/giannotr/type-insurance/issues"
   },
   "homepage": "https://github.com/giannotr/type-insurance#readme",
+  "scripts": {
+    "start": "node index.js",
+    "prepublish": "babel src --out-dir ./",
+    "test": "npm run prepublish && jest --coverage",
+    "test-dev": "xo && npm run test"
+  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
@@ -62,7 +62,7 @@
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/src/"
+      "<rootDir>/index.test.js"
     ]
   }
 }
