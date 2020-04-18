@@ -4,6 +4,7 @@
   "description": "Helper class to force (input) types, mainly for pure JavaScript environments",
   "main": "lib/index.js",
   "scripts": {
+    "start": "node lib/index.js",
     "test": "xo && npm run prepublish && jest",
     "prepublish": "babel src --out-dir lib"
   },
