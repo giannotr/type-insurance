@@ -166,8 +166,6 @@ Returns an array generated from the input of the constructor.
 
 - [Ruben Giannotti](http://rubengiannotti.com) - ruben.giannotti@gmx.net - github.com/giannotr
 
-https://travis-ci.org/github/giannotr/type-insurance
-
 [build-badge]: https://travis-ci.org/giannotr/type-insurance.svg?branch=master
 [build-url]: https://travis-ci.org/giannotr/type-insurance
 [coverage-badge]: https://coveralls.io/repos/github/giannotr/type-insurance/badge.svg?branch=master
