@@ -8,6 +8,7 @@ var _baseconvert = _interopRequireDefault(require("baseconvert"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// Try to import '.'
 var _loop = function _loop() {
   var falsy = _arr[_i];
   var testFalsy = new _index["default"](falsy);
