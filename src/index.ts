@@ -1,6 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
 import hash from 'hash-sum';
-import hexToDec from '../lib/hex-to-dec';
+import convertHex from './utilities/convert-hex';
 
 function castString(input: any): string {
 	if(!input && typeof input === 'boolean') {
@@ -22,7 +22,7 @@ function castNumber(input: any): number {
 	const isArray = Array.isArray(input);
 
 	if(typeof input === 'string' && input) {
-		return hexToDec(hash(input));
+		return convertHex(hash(input));
 	} else if(isArray) {
 		return input.reduce((a: any, b: any) => castNumber(a) + castNumber(b), 0);
 	} else if(input && typeof input === 'object' && !isArray) {

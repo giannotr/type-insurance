@@ -1,9 +1,9 @@
 {
   "name": "type-insurance",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Helper class to force (input) types, mainly for pure JavaScript environments",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/giannotr/type-insurance.git"
@@ -24,9 +24,9 @@
   "homepage": "https://github.com/giannotr/type-insurance#readme",
   "scripts": {
     "build": "tsc",
-    "prepublish": "tsc",
+    "prepare": "tsc",
     "test": "jest --coverage",
-    "test-dev": "xo && npm run test && npm run prepublish"
+    "test-dev": "xo && npm run test && npm run prepare"
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
@@ -44,7 +44,7 @@
   },
   "xo": {
     "rules": {
-      "keyword-spacing": "warn",
+      "keyword-spacing": "off",
       "spaced-comment": "warn",
       "capitalized-comments": "warn",
       "no-trailing-spaces": "warn",
@@ -59,14 +59,7 @@
       "@typescript-eslint/no-unsafe-return": "off"
     },
     "ignores": [
-      "./*.js",
-      "./src/*.test.js",
-      "./lib/*.test.js"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
+      "./src/**/*.test.js"
     ]
   },
   "jest": {
@@ -74,8 +67,7 @@
       "/node_modules/"
     ],
     "roots": [
-      "<rootDir>/src",
-      "<rootDir>/lib"
+      "<rootDir>/src"
     ],
     "testMatch": [
       "**/__tests__/**/*.+(ts|tsx|js)",

@@ -20,7 +20,7 @@ function _hexMap(input: string): number {
 	}
 }
 
-function hexToDec(input: string): number {
+function convertHex(input: string): number {
 	if(_isHex(input)) {
 		return input.split('').reverse().reduce((accum, value, index) => (
 			accum + (_hexMap(value) * (16 ** index))
@@ -30,4 +30,4 @@ function hexToDec(input: string): number {
 	}
 }
 
-export default hexToDec;
+export default convertHex;
