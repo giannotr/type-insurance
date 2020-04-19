@@ -73,15 +73,15 @@ Respectively, `true|false` should return the stringified versions, `1|0` and `[t
 
 ## API
 
-### `new TypeInsurance(input, [options])`
+### Constructor: `new TypeInsurance(input, [options])`
 
-Example: `const myInput = new TypeInsurance(myParam);`
-
-A class instance of `TypeInsurnace` holds the properties `.string`, `.number`, `.boolean`, `.array` and `.object`, each in turn holding the accordingly typed values.
+A class instance of `TypeInsurnace` holds the properties `.string`, `.number`, `.boolean`, `.array` and `.object`, each in turn holding the accordingly typed values mapped from the input value.
 
 Options get passed in as an object. Available options are:
 
 - `defaultKey` (default: "key") - Specifies the default key for implicitly generated objects from strings and numbers
+
+### Properties
 
 #### .string
 
@@ -154,8 +154,7 @@ Returns an array generated from the input of the constructor.
 
 ## Dependencies
 
-- [baseconvert](https://www.npmjs.com/package/baseconvert)
-- [hash.js](https://www.npmjs.com/package/hash.js)
+- [hash-sum](https://www.npmjs.com/package/hash-sum)
 - [lodash](https://www.npmjs.com/package/lodash)
 
 ## Related

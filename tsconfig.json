@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "system",
+		"lib": ["es2017", "es7", "es6", "dom"],
+		"moduleResolution": "node",
+		"declaration": true,
+		"removeComments": true,
+		"outFile": "dist/index.js",
+    "strict": true,
+    "esModuleInterop": true
+	},
+	"include": [
+		"src/**/*",
+		"lib/**/*"
+	],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

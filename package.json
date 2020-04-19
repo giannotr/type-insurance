@@ -1,8 +1,9 @@
 {
   "name": "type-insurance",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Helper class to force (input) types, mainly for pure JavaScript environments",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/giannotr/type-insurance.git"
@@ -22,36 +23,45 @@
   },
   "homepage": "https://github.com/giannotr/type-insurance#readme",
   "scripts": {
-    "start": "node index.js",
-    "prepublish": "babel src --out-dir ./",
-    "test": "npm run prepublish && jest --coverage",
-    "test-dev": "xo && npm run test"
+    "build": "tsc",
+    "prepublish": "tsc",
+    "test": "jest --coverage",
+    "test-dev": "xo && npm run test && npm run prepublish"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
+    "@types/jest": "^25.2.1",
     "coveralls": "^3.0.11",
     "jest": "^25.3.0",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3",
     "xo": "^0.29.1"
   },
   "dependencies": {
-    "baseconvert": "^1.0.0",
-    "hash.js": "^1.1.7",
+    "@types/hash-sum": "^1.0.0",
+    "@types/lodash": "^4.14.150",
+    "hash-sum": "^2.0.0",
     "lodash": "^4.17.15"
   },
   "xo": {
     "rules": {
       "keyword-spacing": "warn",
+      "spaced-comment": "warn",
+      "capitalized-comments": "warn",
       "no-trailing-spaces": "warn",
       "no-prototype-builtins": "warn",
       "no-lonely-if": "off",
       "no-else-return": "off",
-      "no-implicit-coercion": "off"
+      "no-implicit-coercion": "off",
+      "@typescript-eslint/prefer-readonly-parameter-types": "warn",
+      "@typescript-eslint/restrict-plus-operands": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-return": "off"
     },
     "ignores": [
       "./*.js",
-      "./src/*.test.js"
+      "./src/*.test.js",
+      "./lib/*.test.js"
     ]
   },
   "babel": {
@@ -61,8 +71,18 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "/node_modules/",
-      "<rootDir>/index.test.js"
-    ]
+      "/node_modules/"
+    ],
+    "roots": [
+      "<rootDir>/src",
+      "<rootDir>/lib"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.+(ts|tsx|js)",
+      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
   }
 }

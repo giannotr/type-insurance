@@ -1,10 +1,8 @@
 import isEmpty from 'lodash/isEmpty';
-import hash from 'hash.js';
-import baseConvert from 'baseconvert';
+import hash from 'hash-sum';
+import hexToDec from '../lib/hex-to-dec';
 
-function castString(input) {
-	const isArray = Array.isArray(input);
-
+function castString(input: any): string {
 	if(!input && typeof input === 'boolean') {
 		return 'false';
 	} else if(input === 0) {
@@ -13,26 +11,20 @@ function castString(input) {
 		if(isEmpty(input)) {
 			return '';
 		} else {
-			if(isArray) {
-				return `[${input.join(', ')}]`;
-			} else if(!isArray) {
-				const values = Object.values(input);
-				const entries = Object.keys(input).map((k, i) => [k, values[i]]);
-				return `{${entries.map(entry => entry.join(': ')).join(', ')}}`;
-			}
+			return JSON.stringify(input);
 		}
-	} else {
-		return input ? '' + input : '';
 	}
+
+	return input ? '' + input : '';
 }
 
-function castNumber(input) {
+function castNumber(input: any): number {
 	const isArray = Array.isArray(input);
 
 	if(typeof input === 'string' && input) {
-		return baseConvert.hex2dec(hash.sha1().update(input).digest('hex'));
+		return hexToDec(hash(input));
 	} else if(isArray) {
-		return input.reduce((a, b) => castNumber(a) + castNumber(b), 0);
+		return input.reduce((a: any, b: any) => castNumber(a) + castNumber(b), 0);
 	} else if(input && typeof input === 'object' && !isArray) {
 		return castNumber(Object.values(input));
 	} else {
@@ -40,7 +32,7 @@ function castNumber(input) {
 	}
 }
 
-function castBoolean(input) {
+function castBoolean(input: any): boolean {
 	if(typeof input === 'object' && isEmpty(input)) {
 		return false;
 	} else {
@@ -48,7 +40,7 @@ function castBoolean(input) {
 	}
 }
 
-function castArray(input) {
+function castArray(input: any): object {
 	if(Array.isArray(input)) {
 		return input;
 	} else if(typeof input === 'object' && input) {
@@ -60,7 +52,7 @@ function castArray(input) {
 	}
 }
 
-function castObject(input, defaultKey) {
+function castObject(input: any, defaultKey: string): object {
 	const isArray = Array.isArray(input);
 
 	if(!(input || typeof input === 'boolean' || input === 0)) {
@@ -74,12 +66,27 @@ function castObject(input, defaultKey) {
 	}
 }
 
-export default class TypeInsurance {
-	constructor(input, options = {}) {
-		this.input = input;
+interface Options {
+	defaultKey?: string;
+}
 
-		this.defaultKey = options.hasOwnProperty('defaultKey') ?
-			castString(options.defaultKey, {hash: true}) : 'key';
+export default class TypeInsurance {
+	readonly input: string;
+	readonly defaultKey: string;
+
+	public string: string;
+	public number: number;
+	public boolean: boolean;
+	public array: object;
+	public object: object;
+
+	constructor(input: any, options: Options) {
+		this.input = input;
+		this.defaultKey = 'key';
+
+		if(options) {
+			this.defaultKey = castString(options.defaultKey);
+		}
 
 		this.string = this._string();
 		this.number = this._number();

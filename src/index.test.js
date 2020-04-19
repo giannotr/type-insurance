@@ -1,6 +1,4 @@
-import TypeInsurance from '.';
-import hash from 'hash.js';
-import baseConvert from 'baseconvert';
+const TypeInsurance = require('.').default;
 
 for(const falsy of [undefined, null, '']) {
 	const testFalsy = new TypeInsurance(falsy);
@@ -38,7 +36,7 @@ const testString = new TypeInsurance('foo');
 
 test('non-empty string', () => {
 	expect(testString.string).toBe('foo');
-	expect(testString.number).toBe(baseConvert.hex2dec(hash.sha1().update('foo').digest('hex')));
+	expect(testString.number).toBe(440071440);
 	expect(testString.boolean).toBe(true);
 	expect(testString.array).toEqual(['foo']);
 	expect(testString.object).toEqual({ key: 'foo' });
@@ -67,7 +65,7 @@ test('zero', () => {
 const testArray = new TypeInsurance([1, 2, 3]);
 
 test('non-empty array', () => {
-	expect(testArray.string).toBe('[1, 2, 3]');
+	expect(testArray.string).toBe('[1,2,3]');
 	expect(testArray.number).toBe(6);
 	expect(testArray.boolean).toBe(true);
 	expect(testArray.array).toEqual([1, 2, 3]);
@@ -77,7 +75,7 @@ test('non-empty array', () => {
 const testObject = new TypeInsurance({ a: 1, b: 2, c: 3 });
 
 test('non-empty object', () => {
-	expect(testObject.string).toBe('{a: 1, b: 2, c: 3}');
+	expect(testObject.string).toBe('{"a":1,"b":2,"c":3}');
 	expect(testObject.number).toBe(6);
 	expect(testObject.boolean).toBe(true);
 	expect(testObject.array).toEqual([1, 2, 3]);
