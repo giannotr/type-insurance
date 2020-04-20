@@ -1,6 +1,6 @@
 {
   "name": "type-insurance",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Helper class to force (input) types, mainly for pure JavaScript environments",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -64,7 +64,9 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "/node_modules/"
+			"/node_modules/",
+			"/coverage/",
+			"/lib/"
     ],
     "roots": [
       "<rootDir>/src"

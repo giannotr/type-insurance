@@ -1,6 +1,11 @@
+export const ErrorInvalidHexString = new Error(
+	'Can only convert string containing hexadecimal digits'
+);
+
 function _isHex(input: string): boolean {
 	const _exec = /[\da-f]*/im.exec(input);
 	let match;
+	
 	if(_exec) {
 		[match] = _exec;
 	}
@@ -26,7 +31,7 @@ function convertHex(input: string): number {
 			accum + (_hexMap(value) * (16 ** index))
 		), 0);
 	} else {
-		throw new Error('Can only convert string containing hexadecimal digits');
+		throw ErrorInvalidHexString;
 	}
 }
 

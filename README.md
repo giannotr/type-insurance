@@ -2,7 +2,7 @@
 
 > Helper class to force (input) types, mainly for pure JavaScript environments
 
-[![npm][npm-badge]][npm-url] [![build][build-badge]][build-url] [![coverage][coverage-badge]][coverage-url] [![Known Vulnerabilities][vulnerabilities-badge]][vulnerabilities-url] [![size][dependencies-badge]][dependencies-url] [![size][size-badge]][size-url] [![unicorn][unicorn-badge]][unicorn-url] [![xo][xo-badge]][xo-url] [![license][license-badge]][license-url]
+[![npm][npm-badge]][npm-url] [![build][build-badge]][build-url] [![coverage][coverage-badge]][coverage-url] [![Known Vulnerabilities][vulnerabilities-badge]][vulnerabilities-url] [![size][dependencies-badge]][dependencies-url] [![size][size-badge]][size-url] [![types][types-badge]][types-url] [![unicorn][unicorn-badge]][unicorn-url] [![xo][xo-badge]][xo-url] [![license][license-badge]][license-url]
 
 ## Key notes / highlights
 
@@ -22,17 +22,30 @@
 $ npm install type-insurance
 ```
 
-## Usage
+## Usage (real world example)
 
 ```js
 import TypeInsurance from 'type-insurance';
-// or
+
+export const stripHTML = str => {
+	const input = new TypeInsurance(str);
+	return input.string.replace(/<[^>]*>/g, '');
+}
+```
+
+This little utility function sanitizes input from HTML tags. `TypeInsurance` is used to force the regex to obtain a string no matter what.
+
+## Usage overview
+
+```js
+import TypeInsurance from 'type-insurance';
+// or using CommonJS
 //const TypeInsurance = require('type-insurance');
 
 const input = new TypeInsurance('foo');
 
 console.log(input.string);  // "foo" 
-console.log(input.number);  // 68123873083688143418383284816464454849230703155
+console.log(input.number);  // 440071440
 console.log(input.boolean); // true
 console.log(input.array);   // ["foo"]
 console.log(input.object);  // { key: "foo" }
@@ -44,6 +57,8 @@ console.log(arr.number);  // 6
 console.log(arr.boolean); // true
 console.log(arr.array);   // [1, 2, 3]
 console.log(arr.object);  // { 0: 1, 1: 2, 3: 2 }
+
+// ...
 ```
 
 ## Assumptions
@@ -62,7 +77,7 @@ The inputs `[]` and `{}` should be treated as falsy inputs.
 
 A non-empty string should map to
 
-- The decimal representation of the sha1 conversion (number)
+- The decimal representation of a hash conversion, unless the string contains only digits (number)
 - `true` (bool)
 - An array containing the string (array)
 - An object with the default key and the string as the value (object)
@@ -88,60 +103,60 @@ Options get passed in as an object. Available options are:
 Returns a string generated from the input of the constructor.
 
 | Input type | Output |
-| :---:   | :--- |
-| string  | unchanged `input` |
-| number  | Series of stringified digits |
-| boolean | `'true'` / `'false'` |
-| array   | Stringified version of the array content |
-| array   | Stringified version of the object content |
+| :---:      | :--- |
+| string     | unchanged `input` |
+| number     | Series of stringified digits |
+| boolean    | `'true'` / `'false'` |
+| array      | Stringified version of the array content |
+| object     | Stringified version of the object content |
 
 #### .number
 
 Returns a number generated from the input of the constructor.
 
 | Input type | Output |
-| :---:   | :--- |
-| string  | SHA-1 converted to decimal |
-| number  | unchanged `input` |
-| boolean | `1` / `0` |
-| array   | Sum of all elemets |
-| array   | Sum of all object values |
+| :---:      | :--- |
+| string     | Hash converted to decimal |
+| number     | unchanged `input` |
+| boolean    | `1` / `0` |
+| array      | Sum of all elemets |
+| object     | Sum of all object values |
 
 #### .boolean
 
 Returns a number generated from the input of the constructor.
 
 | Input type | Output |
-| :---:   | :--- |
-| string  | `true` if `input` is non-empty |
-| number  | `false` if `input === 0` |
-| boolean | unchanged `input` |
-| array   | `false` if `input === []` |
-| array   | `false` if `input === {}` |
+| :---:      | :--- |
+| string     | `true` if `input` is non-empty |
+| number     | `false` if `input === 0` |
+| boolean    | unchanged `input` |
+| array      | `false` if `input === []` |
+| object     | `false` if `input === {}` |
 
 #### .array
 
 Returns an array generated from the input of the constructor.
 
 | Input type | Output |
-| :---:   | :--- |
-| string  | Array containing `input` |
-| number  | *see above line* |
-| boolean | *see above line* |
-| array   | unchanged `input` |
-| array   | `Object.values(input)` |
+| :---:      | :--- |
+| string     | Array containing `input` |
+| number     | *see above line* |
+| boolean    | *see above line* |
+| array      | unchanged `input` |
+| object     | `Object.values(input)` |
 
 #### .object
 
 Returns an array generated from the input of the constructor.
 
 | Input type | Output |
-| :---:   | :--- |
-| string  | Object containing the key value pair *[defaultKey]=`input`* |
-| number  | *see above line* |
-| boolean | *see above line* |
-| array   | `Object.values(input)` |
-| array   | unchanged `input` |
+| :---:      | :--- |
+| string     | Object containing the key value pair *[defaultKey]=`input`* |
+| number     | *see above line* |
+| boolean    | *see above line* |
+| array      | `{...input}` |
+| object     | unchanged `input` |
 
 ## Keywords
 
@@ -177,6 +192,8 @@ Returns an array generated from the input of the constructor.
 [dependencies-url]: https://david-dm.org/giannotr/type-insurance
 [size-badge]: https://badgen.net/packagephobia/publish/type-insurance
 [size-url]: https://packagephobia.now.sh/result?p=type-insurance
+[types-badge]: https://badgen.net/npm/types/type-insurance
+[types-url]: https://github.com/giannotr/type-insurance/tree/master/src
 [unicorn-badge]: https://img.shields.io/badge/unicorn-approved-ff69b4.svg
 [unicorn-url]: https://www.youtube.com/watch?v=9auOCbH5Ns4
 [xo-badge]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg

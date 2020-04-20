@@ -19,9 +19,11 @@ function castString(input: any): string {
 }
 
 function castNumber(input: any): number {
+	const match = /\d+/.exec(input);
+	const isDigitString = match ? match[0] === input : false;
 	const isArray = Array.isArray(input);
 
-	if(typeof input === 'string' && input) {
+	if(typeof input === 'string' && !isDigitString && input) {
 		return convertHex(hash(input));
 	} else if(isArray) {
 		return input.reduce((a: any, b: any) => castNumber(a) + castNumber(b), 0);
