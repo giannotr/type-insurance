@@ -2,7 +2,7 @@
 
 > Helper class to force (input) types, mainly for pure JavaScript environments
 
-[![npm][npm-badge]][npm-url] [![build][build-badge]][build-url] [![coverage][coverage-badge]][coverage-url] [![Known Vulnerabilities][vulnerabilities-badge]][vulnerabilities-url] [![size][dependencies-badge]][dependencies-url] [![size][size-badge]][size-url] [![types][types-badge]][types-url] [![unicorn][unicorn-badge]][unicorn-url] [![xo][xo-badge]][xo-url] [![license][license-badge]][license-url]
+[![npm][npm-badge]][npm-url] [![build][build-badge]][build-url] [![coverage][coverage-badge]][coverage-url] [![Known Vulnerabilities][vulnerabilities-badge]][vulnerabilities-url] [![dependencies][dependencies-badge]][dependencies-url] [![size][size-badge]][size-url] [![types][types-badge]][types-url] [![unicorn][unicorn-badge]][unicorn-url] [![xo][xo-badge]][xo-url] [![license][license-badge]][license-url]
 
 ## Key notes / highlights
 
@@ -33,7 +33,7 @@ export const stripHTML = str => {
 }
 ```
 
-This little utility function sanitizes input from HTML tags. `TypeInsurance` is used to force the regex to obtain a string no matter what.
+This little utility function sanitizes an input parameter from HTML tags. `TypeInsurance` is used to force the regex to obtain a string no matter what.
 
 ## Usage overview
 
