@@ -1,21 +1,28 @@
 import isEmpty from 'lodash/isEmpty';
+import hasOwnProp from 'has-own-prop';
 import hash from 'hash-sum';
 import convertHex from './utilities/convert-hex';
 
-function castString(input: any): string {
-	if(!input && typeof input === 'boolean') {
-		return 'false';
-	} else if(input === 0) {
-		return '0';
-	} else if(input && typeof input === 'object') {
-		if(isEmpty(input)) {
-			return '';
+function castString(input: any, strBoolVerb: boolean = false): string {
+	let _return = input ? '' + input : '';
+
+	if(typeof input === 'boolean') {
+		if(strBoolVerb) {
+			_return = input ? 'true' : 'false';
 		} else {
-			return JSON.stringify(input);
+			_return = input ? '1' : '0';
 		}
+	} else if(typeof input === 'object') {
+		if(isEmpty(input)) {
+			_return = '';
+		} else {
+			_return = JSON.stringify(input);
+		}
+	} else if(input === 0) {
+		_return = '0';
 	}
 
-	return input ? '' + input : '';
+	return _return;
 }
 
 function castNumber(input: any): number {
@@ -69,12 +76,14 @@ function castObject(input: any, defaultKey: string): object {
 }
 
 interface Options {
-	defaultKey?: string;
+	defaultKey: string;
+	stringifyBoolsVerbatim: boolean;
 }
 
 export default class TypeInsurance {
 	readonly input: string;
 	readonly defaultKey: string;
+	readonly stringifyBoolsVerbatim: boolean;
 
 	public string: string;
 	public number: number;
@@ -83,13 +92,18 @@ export default class TypeInsurance {
 	public object: object;
 
 	constructor(input: any, options: Options) {
-		console.log(this, typeof this);
-		
 		this.input = input;
 		this.defaultKey = 'key';
+		this.stringifyBoolsVerbatim = false;
 
 		if(options) {
-			this.defaultKey = castString(options.defaultKey);
+			if(hasOwnProp(options, 'defaultKey')) {
+				this.defaultKey = castString(options.defaultKey);
+			}
+			
+			if(hasOwnProp(options, 'stringifyBoolsVerbatim')) {
+				this.stringifyBoolsVerbatim = options.stringifyBoolsVerbatim;
+			}
 		}
 
 		this.string = this._string();
@@ -100,8 +114,8 @@ export default class TypeInsurance {
 	}
 
 	_string() {
-		const {input} = this;
-		return castString(input);
+		const {input, stringifyBoolsVerbatim} = this;
+		return castString(input, stringifyBoolsVerbatim);
 	}
 
 	_number() {

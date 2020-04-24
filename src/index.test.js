@@ -15,7 +15,7 @@ for(const falsy of [undefined, null, '']) {
 test('false', () => {
 	const test = new TypeInsurance(false);
 
-	expect(test.string).toBe('false');
+	expect(test.string).toBe('0');
 	expect(test.number).toBe(0);
 	expect(test.boolean).toBe(false);
 	expect(test.array).toEqual([false]);
@@ -25,11 +25,19 @@ test('false', () => {
 test('true', () => {
 	const test = new TypeInsurance(true);
 
-	expect(test.string).toBe('true');
+	expect(test.string).toBe('1');
 	expect(test.number).toBe(1);
 	expect(test.boolean).toBe(true);
 	expect(test.array).toEqual([true]);
 	expect(test.object).toEqual({ key: true });
+});
+
+test('verbatim stringification of booleans', () => {
+	const testA = new TypeInsurance(false, {stringifyBoolsVerbatim: true});
+	expect(testA.string).toBe('false');
+
+	const testB = new TypeInsurance(true, {stringifyBoolsVerbatim: true});
+	expect(testB.string).toBe('true');
 });
 
 test('non-empty string', () => {

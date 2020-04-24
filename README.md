@@ -27,15 +27,15 @@ $ npm install type-insurance
 ```js
 import TypeInsurance from 'type-insurance';
 
-export const stripHTML = str => {
-	const input = new TypeInsurance(str);
-	return input.string.replace(/<[^>]*>/g, '');
+export const stripHTML = input => {
+	const { string } = new TypeInsurance(input);
+	return string.replace(/<[^>]*>/g, '');
 }
 ```
 
 This little utility function sanitizes an input parameter from HTML tags. `TypeInsurance` is used to force the regex to obtain a string no matter what.
 
-## Usage overview
+## Usage (overview)
 
 ```js
 import TypeInsurance from 'type-insurance';
@@ -170,11 +170,13 @@ Returns an array generated from the input of the constructor.
 ## Dependencies
 
 - [hash-sum](https://www.npmjs.com/package/hash-sum)
+- [has-own-prop](https://www.npmjs.com/package/has-own-prop)
 - [lodash](https://www.npmjs.com/package/lodash)
 
 ## Related
 
 - [typeablejs](https://github.com/xpepermint/typeablejs) - A library for checking and casting types.
+- [@sindresorhus/is](https://www.npmjs.com/package/@sindresorhus/is) - Type check values
 
 ## Maintainer
 
