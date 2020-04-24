@@ -1,11 +1,13 @@
 # Changelog
 
-## Unreleased changes
-
-- Added an option for verbatim stringification of boolean types
-- Added an option for returning hash values of object types
-
 ## Released changes
+
+### 1.2.0 - 2020-04-25
+
+#### Added
+
+- Option for verbatim stringification of boolean types
+- Option for returning hash values of object types
 
 ### 1.1.3 - 2020-04-24
 

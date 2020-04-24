@@ -84,7 +84,7 @@ A non-empty string should map to
 
 where the edge case `'false'` should return `false` when requesting the `.boolean` property. Numbers shall work in an analogous fashion. `0` especially should yield `false`.
 
-Respectively, `true|false` should return the stringified versions, `1|0` and `[true|false]`.
+Respectively, `true|false` should return `"1"|"0"`, `1|0` and `[true|false]`.
 
 ## API
 
@@ -95,6 +95,8 @@ A class instance of `TypeInsurnace` holds the properties `.string`, `.number`, `
 Options get passed in as an object. Available options are:
 
 - `defaultKey` (default: "key") - Specifies the default key for implicitly generated objects from strings and numbers
+- `hashObjects` (default: false) - The `.number` prop returns a hash for object inputs
+- `stringifyBoolsVerbatim` (default: false) - The `.string` prop returns stringified versions (`"true"|"false"`) for boolean inputs
 
 ### Properties
 
