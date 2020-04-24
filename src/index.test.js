@@ -114,6 +114,14 @@ test('empty object', () => {
 	expect(test.object).toEqual({});
 });
 
+test('haseObjects option', () => {
+	const testA = new TypeInsurance(['foo'], {hashObjects: true});
+	expect(testA.number).toBe(2785136192);
+
+	const testB = new TypeInsurance({foo: 'bar'}, {hashObjects: true});
+	expect(testB.number).toBe(1270567586);
+});
+
 test('defaultKey option', () => {
 	const test = new TypeInsurance('bar', {
 		defaultKey: 'foo'

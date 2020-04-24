@@ -3,6 +3,7 @@
 ## Unreleased changes
 
 - Added an option for verbatim stringification of boolean types
+- Added an option for returning hash values of object types
 
 ## Released changes
 

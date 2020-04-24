@@ -25,17 +25,27 @@ function castString(input: any, strBoolVerb: boolean = false): string {
 	return _return;
 }
 
-function castNumber(input: any): number {
+function castNumber(input: any, hashObjects: boolean = false): number {
 	const match = /\d+/.exec(input);
 	const isDigitString = match ? match[0] === input : false;
 	const isArray = Array.isArray(input);
 
+	const _hash = convertHex(hash(input));
+
 	if(typeof input === 'string' && !isDigitString && input) {
-		return convertHex(hash(input));
-	} else if(isArray) {
-		return input.reduce((a: any, b: any) => castNumber(a) + castNumber(b), 0);
-	} else if(input && typeof input === 'object' && !isArray) {
-		return castNumber(Object.values(input));
+		return _hash;
+	} else if(input && typeof input === 'object') {
+		if(hashObjects) {
+			return _hash;
+		} else {
+			if(isArray) {
+				return input.reduce(
+					(a: any, b: any) => (castNumber(a) + castNumber(b)), 0
+				);
+			} else {
+				return castNumber(Object.values(input));
+			}
+		}
 	} else {
 		return input ? +input : 0;
 	}
@@ -77,12 +87,14 @@ function castObject(input: any, defaultKey: string): object {
 
 interface Options {
 	defaultKey: string;
+	hashObjects: boolean;
 	stringifyBoolsVerbatim: boolean;
 }
 
 export default class TypeInsurance {
 	readonly input: string;
 	readonly defaultKey: string;
+	readonly hashObjects: boolean;
 	readonly stringifyBoolsVerbatim: boolean;
 
 	public string: string;
@@ -94,11 +106,16 @@ export default class TypeInsurance {
 	constructor(input: any, options: Options) {
 		this.input = input;
 		this.defaultKey = 'key';
+		this.hashObjects = false;
 		this.stringifyBoolsVerbatim = false;
 
 		if(options) {
 			if(hasOwnProp(options, 'defaultKey')) {
 				this.defaultKey = castString(options.defaultKey);
+			}
+
+			if(hasOwnProp(options, 'hashObjects')) {
+				this.hashObjects = options.hashObjects;
 			}
 			
 			if(hasOwnProp(options, 'stringifyBoolsVerbatim')) {
@@ -119,8 +136,8 @@ export default class TypeInsurance {
 	}
 
 	_number() {
-		const {input} = this;
-		return castNumber(input);
+		const {input, hashObjects} = this;
+		return castNumber(input, hashObjects);
 	}
 
 	_boolean() {
