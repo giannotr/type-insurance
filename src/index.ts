@@ -3,11 +3,11 @@ import hasOwnProp from 'has-own-prop';
 import hash from 'hash-sum';
 import convertHex from './utilities/convert-hex';
 
-function castString(input: any, strBoolVerb: boolean = false): string {
+function castString(input: any, stringifyBoolVerb = false): string {
 	let _return = input ? '' + input : '';
 
 	if(typeof input === 'boolean') {
-		if(strBoolVerb) {
+		if(stringifyBoolVerb) {
 			_return = input ? 'true' : 'false';
 		} else {
 			_return = input ? '1' : '0';
@@ -25,7 +25,7 @@ function castString(input: any, strBoolVerb: boolean = false): string {
 	return _return;
 }
 
-function castNumber(input: any, hashObjects: boolean = false): number {
+function castNumber(input: any, hashObjects = false): number {
 	const match = /\d+/.exec(input);
 	const isDigitString = match ? match[0] === input : false;
 	const isArray = Array.isArray(input);

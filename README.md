@@ -84,7 +84,7 @@ A non-empty string should map to
 
 where the edge case `'false'` should return `false` when requesting the `.boolean` property. Numbers shall work in an analogous fashion. `0` especially should yield `false`.
 
-Respectively, `true|false` should return `"1"|"0"`, `1|0` and `[true|false]`.
+Respectively, `true|false` should return `'1'|'0'`, `1|0` and `[true|false]`.
 
 ## API
 
@@ -96,7 +96,7 @@ Options get passed in as an object. Available options are:
 
 - `defaultKey` (default: "key") - Specifies the default key for implicitly generated objects from strings and numbers
 - `hashObjects` (default: false) - The `.number` prop returns a hash for object inputs
-- `stringifyBoolsVerbatim` (default: false) - The `.string` prop returns stringified versions (`"true"|"false"`) for boolean inputs
+- `stringifyBoolsVerbatim` (default: false) - The `.string` prop returns stringified versions (`'true'|'false'`) for boolean inputs
 
 ### Properties
 
@@ -108,7 +108,7 @@ Returns a string generated from the input of the constructor.
 | :---:      | :--- |
 | string     | unchanged `input` |
 | number     | Series of stringified digits |
-| boolean    | `'true'` / `'false'` |
+| boolean    | `'1'` / `'0'` |
 | array      | Stringified version of the array content |
 | object     | Stringified version of the object content |
 
