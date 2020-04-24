@@ -83,6 +83,8 @@ export default class TypeInsurance {
 	public object: object;
 
 	constructor(input: any, options: Options) {
+		console.log(this, typeof this);
+		
 		this.input = input;
 		this.defaultKey = 'key';
 

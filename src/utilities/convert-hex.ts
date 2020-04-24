@@ -29,7 +29,7 @@ export function _hexMap(input: string): number {
 
 function convertHex(input: string): number {
 	if(_isHex(input)) {
-		const { length } = input;
+		const {length} = input;
 		return input.split('').reduce((accum, value, index) => (
 			accum + (_hexMap(value) * (16 ** (length - index - 1)))
 		), 0);
