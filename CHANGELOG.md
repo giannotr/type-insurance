@@ -2,6 +2,12 @@
 
 ## Released changes
 
+### 1.2.2 -2020-04-26
+
+#### Fixed
+
+- The `.array` prop returns the correct type
+
 ### 1.2.1 - 2020-04-26
 
 #### Fixed

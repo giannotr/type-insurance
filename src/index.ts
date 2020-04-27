@@ -59,7 +59,7 @@ function castBoolean(input: any): boolean {
 	}
 }
 
-function castArray(input: any): object {
+function castArray(input: any): any[] {
 	if(Array.isArray(input)) {
 		return input;
 	} else if(typeof input === 'object' && input) {
