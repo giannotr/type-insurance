@@ -100,7 +100,7 @@ export default class TypeInsurance {
 	public string: string;
 	public number: number;
 	public boolean: boolean;
-	public array: object;
+	public array: any[];
 	public object: object;
 
 	constructor(input: any, options?: Options) {
