@@ -103,7 +103,7 @@ export default class TypeInsurance {
 	public array: object;
 	public object: object;
 
-	constructor(input: any, options: Options) {
+	constructor(input: any, options?: Options) {
 		this.input = input;
 		this.defaultKey = 'key';
 		this.hashObjects = false;
@@ -117,7 +117,7 @@ export default class TypeInsurance {
 			if(hasOwnProp(options, 'hashObjects')) {
 				this.hashObjects = options.hashObjects;
 			}
-			
+
 			if(hasOwnProp(options, 'stringifyBoolsVerbatim')) {
 				this.stringifyBoolsVerbatim = options.stringifyBoolsVerbatim;
 			}

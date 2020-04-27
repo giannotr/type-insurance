@@ -2,6 +2,12 @@
 
 ## Released changes
 
+### 1.2.1 - 2020-04-26
+
+#### Fixed
+
+- `options` are actually optional now
+
 ### 1.2.0 - 2020-04-25
 
 #### Added
