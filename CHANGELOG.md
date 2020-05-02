@@ -2,6 +2,12 @@
 
 ## Released changes
 
+### 1.2.4 - 2020-05-03
+
+#### Added
+
+- `.synk` config with a lodash vulnerability fix
+
 ### 1.2.3 - 2020-04-26
 
 #### Fixed
