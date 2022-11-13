@@ -47,7 +47,7 @@ test('non-empty string', () => {
 	expect(test.string).toBe('foo');
 	expect(test.number).toBe(440071440);
 	expect(test.boolean).toBe(true);
-	expect(test.array).toEqual(['foo', 'f', 'o', 'o']);
+	expect(test.array).toEqual(['f', 'o', 'o']);
 	expect(test.object).toEqual({ key: 'foo' });
 
 	const testAlt = new TypeInsurance('12345');
@@ -61,7 +61,7 @@ test('non-zero number', () => {
 	expect(test.string).toBe('123');
 	expect(test.number).toBe(123);
 	expect(test.boolean).toBe(true);
-	expect(test.array).toEqual([123]);
+	expect(test.array).toEqual([1, 2, 3]);
 	expect(test.object).toEqual({ key: 123 });
 });
 

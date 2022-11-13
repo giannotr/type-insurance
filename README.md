@@ -47,7 +47,7 @@ const input = new TypeInsurance('foo');
 console.log(input.string);  // "foo" 
 console.log(input.number);  // 440071440
 console.log(input.boolean); // true
-console.log(input.array);   // ["foo", "f", "o", "o"]
+console.log(input.array);   // ["f", "o", "o"]
 console.log(input.object);  // { key: "foo" }
 
 const arr = new TypeInsurance([1, 2, 3]);
@@ -142,9 +142,9 @@ Returns an array generated from the input of the constructor.
 
 | Input type | Output |
 | :---:      | :--- |
-| string     | Array containing `input` and the single letters |
-| number     | *see above line* |
-| boolean    | *see above line* |
+| string     | Array containing the single letters of the `input` |
+| number     | Array containing the digits of the `input` number |
+| boolean    | *see 'string'* |
 | array      | unchanged `input` |
 | object     | `Object.values(input)` |
 

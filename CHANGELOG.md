@@ -2,6 +2,15 @@
 
 ## Released changes
 
+### 1.2.10 - 2022-11-13
+
+- Fixed README.
+
+### 1.2.9 - 2022-11-13
+
+- For number inputs the `.array` prop now returns an array containg the single digits of the input number.
+- For string inputs the `.array` prop now returns an array containg the single letters of the input string.
+
 ### 1.2.8 - 2022-11-13
 
 - Fixed dependencies badge.
