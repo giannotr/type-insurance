@@ -2,6 +2,10 @@
 
 ## Released changes
 
+### 1.2.7 - 2022-11-13
+
+- Updated snyk
+
 ### 1.2.6 - 2022-11-13
 
 - Removed clutter.

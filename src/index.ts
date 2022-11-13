@@ -71,14 +71,14 @@ function castArray(input: any): any[] {
 	} else if(typeof input === 'object' && input) {
 		return Object.values(input);
 	} else if(typeof input === 'string' && input) {
-		const ret = [input];
+		const returnValue = [input];
 
-		for(let letter of input) {
-			ret.push(letter);
+		for(const letter of input) {
+			returnValue.push(letter);
 		}
 
-		return ret;
-	} else if(input || typeof input === 'boolean' || input === 0) {
+		return returnValue;
+	} else if(input || typeof input === 'boolean' || input === 0) {
 		return [input];
 	} else {
 		return [];
