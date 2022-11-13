@@ -3,7 +3,11 @@ import hasOwnProp from 'has-own-prop';
 import hash from 'hash-sum';
 import convertHex from './utils/convert-hex';
 
-import type { TIOptions } from './types/index';
+interface TIOptions {
+	defaultKey: string;
+	hashObjects: boolean;
+	stringifyBoolsVerbatim: boolean;
+}
 
 function castString(input: any, stringifyBoolVerb = false): string {
 	let _return = input ? '' + input : '';
