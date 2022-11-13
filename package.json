@@ -40,7 +40,7 @@
   "dependencies": {
     "@snyk/protect": "^1.1058.0",
     "@types/hash-sum": "^1.0.0",
-    "@types/lodash": "^4.14.150",
+    "@types/lodash": "^4.14.186",
     "has-own-prop": "^2.0.0",
     "hash-sum": "^2.0.0",
     "lodash": "^4.17.21",
