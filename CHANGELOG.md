@@ -2,6 +2,10 @@
 
 ## Released changes
 
+### 1.2.8 - 2022-11-13
+
+- Fixed dependencies badge
+
 ### 1.2.7 - 2022-11-13
 
 - Updated snyk

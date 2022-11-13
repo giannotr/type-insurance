@@ -192,8 +192,8 @@ Returns an array generated from the input of the constructor.
 [coverage-url]: https://coveralls.io/github/giannotr/type-insurance?branch=master
 [vulnerabilities-badge]: https://snyk.io/test/github/giannotr/type-insurance/badge.svg?targetFile=package.json
 [vulnerabilities-url]: https://snyk.io/test/github/giannotr/type-insurance?targetFile=package.json
-[dependencies-badge]: https://david-dm.org/giannotr/type-insurance.svg
-[dependencies-url]: https://david-dm.org/giannotr/type-insurance
+[dependencies-badge]: https://img.shields.io/librariesio/github/giannotr/type-insurance
+[dependencies-url]: https://github.com/giannotr/type-insurance/network/dependencies
 [size-badge]: https://badgen.net/packagephobia/publish/type-insurance
 [size-url]: https://packagephobia.now.sh/result?p=type-insurance
 [types-badge]: https://badgen.net/npm/types/type-insurance
