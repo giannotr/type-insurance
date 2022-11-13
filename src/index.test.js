@@ -1,4 +1,5 @@
 const TypeInsurance = require('.').default;
+// import TypeInsurance from '.';
 
 for(const falsy of [undefined, null, '']) {
 	test('falsy: ' + falsy, () => {
@@ -46,7 +47,7 @@ test('non-empty string', () => {
 	expect(test.string).toBe('foo');
 	expect(test.number).toBe(440071440);
 	expect(test.boolean).toBe(true);
-	expect(test.array).toEqual(['foo']);
+	expect(test.array).toEqual(['foo', 'f', 'o', 'o']);
 	expect(test.object).toEqual({ key: 'foo' });
 
 	const testAlt = new TypeInsurance('12345');

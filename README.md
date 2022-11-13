@@ -28,8 +28,8 @@ $ npm install type-insurance
 import TypeInsurance from 'type-insurance';
 
 export const stripHTML = input => {
-	const { string } = new TypeInsurance(input);
-	return string.replace(/<[^>]*>/g, '');
+	const castInput = new TypeInsurance(input);
+	return castInput.string.replace(/<[^>]*>/g, '');
 }
 ```
 
@@ -47,7 +47,7 @@ const input = new TypeInsurance('foo');
 console.log(input.string);  // "foo" 
 console.log(input.number);  // 440071440
 console.log(input.boolean); // true
-console.log(input.array);   // ["foo"]
+console.log(input.array);   // ["foo", "f", "o", "o"]
 console.log(input.object);  // { key: "foo" }
 
 const arr = new TypeInsurance([1, 2, 3]);
@@ -79,7 +79,7 @@ A non-empty string should map to
 
 - The decimal representation of a hash conversion, unless the string contains only digits (number)
 - `true` (bool)
-- An array containing the string (array)
+- An array containing the string on the first index and its single letters on the consecutive indices (array)
 - An object with the default key and the string as the value (object)
 
 where the edge case `'false'` should return `false` when requesting the `.boolean` property. Numbers shall work in an analogous fashion. `0` especially should yield `false`.
@@ -142,7 +142,7 @@ Returns an array generated from the input of the constructor.
 
 | Input type | Output |
 | :---:      | :--- |
-| string     | Array containing `input` |
+| string     | Array containing `input` and the single letters |
 | number     | *see above line* |
 | boolean    | *see above line* |
 | array      | unchanged `input` |

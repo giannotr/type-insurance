@@ -1,7 +1,9 @@
 import isEmpty from 'lodash/isEmpty';
 import hasOwnProp from 'has-own-prop';
 import hash from 'hash-sum';
-import convertHex from './utilities/convert-hex';
+import convertHex from './utils/convert-hex';
+
+import type { TIOptions } from './types/index';
 
 function castString(input: any, stringifyBoolVerb = false): string {
 	let _return = input ? '' + input : '';
@@ -64,7 +66,15 @@ function castArray(input: any): any[] {
 		return input;
 	} else if(typeof input === 'object' && input) {
 		return Object.values(input);
-	} else if(input || typeof input === 'boolean' || input === 0) {
+	} else if(typeof input === 'string' && input) {
+		const ret = [input];
+
+		for(let letter of input) {
+			ret.push(letter);
+		}
+
+		return ret;
+	} else if(input || typeof input === 'boolean' || input === 0) {
 		return [input];
 	} else {
 		return [];
@@ -85,12 +95,6 @@ function castObject(input: any, defaultKey: string): object {
 	}
 }
 
-interface Options {
-	defaultKey: string;
-	hashObjects: boolean;
-	stringifyBoolsVerbatim: boolean;
-}
-
 export default class TypeInsurance {
 	readonly input: string;
 	readonly defaultKey: string;
@@ -103,7 +107,7 @@ export default class TypeInsurance {
 	public array: any[];
 	public object: object;
 
-	constructor(input: any, options?: Options) {
+	constructor(input: any, options?: TIOptions) {
 		this.input = input;
 		this.defaultKey = 'key';
 		this.hashObjects = false;
@@ -123,34 +127,34 @@ export default class TypeInsurance {
 			}
 		}
 
-		this.string = this._string();
-		this.number = this._number();
-		this.boolean = this._boolean();
-		this.array = this._array();
-		this.object = this._object();
+		this.string = this.__string__();
+		this.number = this.__number__();
+		this.boolean = this.__boolean__();
+		this.array = this.__array__();
+		this.object = this.__object__();
 	}
 
-	_string() {
+	__string__() {
 		const {input, stringifyBoolsVerbatim} = this;
 		return castString(input, stringifyBoolsVerbatim);
 	}
 
-	_number() {
+	__number__() {
 		const {input, hashObjects} = this;
 		return castNumber(input, hashObjects);
 	}
 
-	_boolean() {
+	__boolean__() {
 		const {input} = this;
 		return castBoolean(input);
 	}
 
-	_array() {
+	__array__() {
 		const {input} = this;
 		return castArray(input);
 	}
 
-	_object() {
+	__object__() {
 		const {input, defaultKey} = this;
 		return castObject(input, defaultKey);
 	}
