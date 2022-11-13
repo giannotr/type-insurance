@@ -2,6 +2,10 @@
 
 ## Released changes
 
+### 1.2.6 - 2022-11-13
+
+- Removed clutter.
+
 ### 1.2.5 - 2022-11-13
 
 - For string inputs the `.array` prop now returns an array containg the string itself on the first index and its single letters on the consecutive indices.
