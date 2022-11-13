@@ -4,11 +4,11 @@
 
 ### 1.2.8 - 2022-11-13
 
-- Fixed dependencies badge
+- Fixed dependencies badge.
 
 ### 1.2.7 - 2022-11-13
 
-- Updated snyk
+- Updated snyk.
 
 ### 1.2.6 - 2022-11-13
 
