@@ -38,7 +38,7 @@
     "xo": "^0.29.1"
   },
   "dependencies": {
-    "@snyk/protect": "^1.1058.0",
+    "@snyk/protect": "^1.1059.0",
     "@types/hash-sum": "^1.0.0",
     "@types/lodash": "^4.14.150",
     "has-own-prop": "^2.0.0",
