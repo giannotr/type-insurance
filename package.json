@@ -35,7 +35,7 @@
     "jest": "^25.3.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3",
-    "xo": "^0.29.1"
+    "xo": "^0.53.1"
   },
   "dependencies": {
     "@snyk/protect": "^1.1058.0",
